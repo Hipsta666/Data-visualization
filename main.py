@@ -3,6 +3,7 @@ import pylab
 
 
 def course_dynamics(file):
+    """The function builds a graph of the dynamics of a single currency."""
     list_data = []
     date = []
     days = 1
@@ -11,12 +12,12 @@ def course_dynamics(file):
             date.append(days)
             list_data.append(float(item))
             days += 1
-
     plt.title("Belarusian ruble (01/01/17 - 01/01/18)")
     plt.xlabel("Days")
     plt.ylabel("Course ")
     plt.grid(True)
-    graph = input("Show the graph in standard form (1), red lines (2), blue dots and lines (3): ")
+    graph = input("Show the graph in standard form (1),"
+                  " red lines (2), blue dots and lines (3): ")
     if graph == str(1):
         plt.plot(date, list_data)
         plt.show()
@@ -31,6 +32,8 @@ def course_dynamics(file):
 
 
 def several_course_dynamics(file, graph):
+    """The function builds graphs of the exchange
+    rate of two currencies for comparison."""
     date = []
     course_USA = []
     course_CANADA = []
@@ -50,7 +53,7 @@ def several_course_dynamics(file, graph):
         plt.grid(True)
         plt.plot(date, course_USA, date, course_CANADA)
         plt.show()
-    if graph == 21:
+    if graph == 2.1:
         plt.figure(figsize=(10, 7))
         # subplot 1
         plt.subplot(221)
@@ -69,6 +72,8 @@ def several_course_dynamics(file, graph):
 
 
 def dynamic_chart(file):
+    """The function builds a dynamic graph of
+    changes in the currency exchange rate."""
     list_data = []
     date = []
     days = 1
@@ -90,6 +95,8 @@ def dynamic_chart(file):
 
 
 def bar_chart(file):
+    """The function builds histograms of the currency
+    exchange rate of two or two currencies, depending on the user's choice."""
     date = []
     course_USA = []
     course_CANADA = []
@@ -172,6 +179,9 @@ def bar_chart(file):
 
 
 def diagram():
+    """The function builds a diagram of the volume of
+     transactions for the purchase of US dollars and
+     euros for rubles concluded by the Bank of Russia."""
     data = [157301, 94846.2, 62454.8]
     plt.figure(figsize=(10, 7))
     plt.title("Volume of transactions dollars and euros for rubles (01/17/17)")
@@ -182,22 +192,23 @@ def diagram():
 
 
 def main():
+    """The function "communicates" with the user and displays graphs based on his desires."""
     print("""Single chart of the Belarusian ruble for 01/01/17 - 01/01/18 (1)
-Dynamic schedule of the Belarusian ruble rate (11)
+Dynamic schedule of the Belarusian ruble rate (1.1)
 Two charts of the US dollar and the Canadian dollar 01/01/16 - 06/30/2017 (2) 
-One exchange rate of the US dollar and the Canadian dollar (21)
+One exchange rate of the US dollar and the Canadian dollar (2.1)
 Histogram of us dollar and canadian dollar (3)
 Chart of the volume of transactions for the purchase of US dollars and euros for rubles on 01/17/2017 (4)""")
     print("What to show?")
     what_to_show = input()
     if what_to_show == str(1):
         course_dynamics("input.txt")
-    if what_to_show == str(11):
+    if what_to_show == str(1.1):
         dynamic_chart("input.txt")
     if what_to_show == str(2):
         several_course_dynamics("output.txt", 2)
-    if what_to_show == str(21):
-        several_course_dynamics("output.txt", 21)
+    if what_to_show == str(2.1):
+        several_course_dynamics("output.txt", 2.1)
     if what_to_show == str(3):
         bar_chart("output.txt")
     if what_to_show == str(4):
